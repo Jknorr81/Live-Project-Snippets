@@ -1,0 +1,27 @@
+﻿
+<div class="form-group">
+    @Html.LabelFor(model => model.ProductRating, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @*  ----Replaced This code, with code below---
+            Html.EditorFor(model => model.ProductRating, new { htmlAttributes = new { @class = "form-control" } })*@
+        <div class="star-rating fa-lg fa-ul">
+            <div class="star-rating__wrap fa-lg fa-ul">
+                <input class="star-rating__input fa-lg" id="product-rating-5" type="radio" name="rating" value="5">
+                <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-5" title="5 out of 5 stars"></label>
+                <input class="star-rating__input fa-lg" id="product-rating-4" type="radio" name="rating" value="4">
+                <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-4" title="4 out of 5 stars"></label>
+                <input class="star-rating__input fa-lg" id="product-rating-3" type="radio" name="rating" value="3">
+                <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-3" title="3 out of 5 stars"></label>
+                <input class="star-rating__input fa-lg" id="product-rating-2" type="radio" name="rating" value="2">
+                <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-2" title="2 out of 5 stars"></label>
+                <input class="star-rating__input fa-lg" id="product-rating-1" type="radio" name="rating" value="1">
+                <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-1" title="1 out of 5 stars"></label>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Styles.Render("~/Content/font-awesome")
+}

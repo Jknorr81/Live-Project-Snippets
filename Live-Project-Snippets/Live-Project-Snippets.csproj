@@ -117,13 +117,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="FontAwesome_starRating\FontAweome_StarRating_Before&amp;After.PNG" />
     <Content Include="Global.asax" />
+    <Content Include="NavBar_Dropdown\NavBar_Dropdown_Before&amp;After.PNG" />
+    <Content Include="PopulateTodaysDateTime\PopulateTodaysDate&amp;Time_Before&amp;After.PNG" />
+    <Content Include="RegisterFormLayout\Register_Layout_Before&amp;After.PNG" />
+    <Content Include="RemoveCalculatedDiscount\RemoveCalculatedDiscount_1.PNG" />
+    <Content Include="RemoveCalculatedDiscount\RemoveCalculatedDiscount_2.PNG" />
+    <Content Include="RemoveCalculatedDiscount\RemoveCalculatedDiscount_3.PNG" />
+    <Content Include="RemoveCalculatedDiscount\RemoveCalculatedDiscount_4.PNG" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="StoryBoard\StoryBoard.PNG" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="FontAwesome_starRating\bundleconfig_FontAwesome.cs" />
+    <Compile Include="PopulateTodaysDateTime\PopulateDateTimeInController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -135,6 +146,9 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="FontAwesome_starRating\FontAwesome_view_changes.cshtml" />
+    <Content Include="NavBar_Dropdown\NavBarDropdownCode.cshtml" />
+    <Content Include="RegisterFormLayout\RegisterLayoutCode.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

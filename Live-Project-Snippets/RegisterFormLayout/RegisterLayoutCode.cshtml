@@ -1,0 +1,153 @@
+﻿@model BlueRibbonsReview.Models.RegisterViewModel
+@{
+
+    ViewBag.Title = "Register as a Buyer or Seller Today!";
+
+    ViewBag.ReturnUrl = Url.Action("Index", "Campaigns");
+}
+<h2 class="text-center">@ViewBag.Title</h2>
+
+<!-- Nav tabs -->
+<ul class="nav nav-pills" role="tablist">
+    <li role="presentation" id="signin-btn"><a href="#signin" aria-controls="signin" role="tab" data-toggle="tab" class="btn btn-primary">Sign In</a></li>
+    <li role="presentation" id="register-btn"><a href="#register" aria-controls="register" role="tab" data-toggle="tab" class="btn btn-primary">Register</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="signin">
+        <div class="row">
+            <div class="col-md-8">
+                <section id="loginForm">
+                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <h4>Sign In</h4>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <div class="checkbox">
+                                    @Html.CheckBoxFor(m => m.RememberMe)
+                                    @Html.LabelFor(m => m.RememberMe)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Log in" class="btn btn-primary" />
+                            </div>
+                        </div>
+                        @* Enable this once you have account confirmation enabled for password reset functionality
+                            <p>
+                                @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                            </p>*@
+                    }
+                </section>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="register">
+        @using (Html.BeginForm("Register", "Account", new { }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <h4>Register as a Buyer or Seller</h4>
+
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <div class="form-group row">
+
+                <div class="col-md-2">
+                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @placeholder = "First Name" })
+                </div>
+                <div class="col-md-2">
+                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @placeholder = "Last Name" })
+                </div>
+            </div>
+            <div class="form-group row">
+
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
+                </div>
+            </div>
+            <div class="form-group row">
+
+                <div class="col-md-10">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                </div>
+            </div>
+            <div class="form-group row">
+
+                <div class="col-md-10">
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-2 col-md-5">
+                    <p>
+                        Password requirements: <br />
+                        -At least 6 characters long <br />
+                        -At least one non-alphanumeric character <br />
+                        -At Least one digit <br />
+                        -At least one lowercase letter <br />
+                        -At least one uppercase letter
+                    </p>
+                </div>
+                <div class="col-md-3 col-md-5">
+                    <div class="radio">
+                        <div class="radio-form">
+                            <label>
+                                <input type="radio" name="isBuyer" id="accountTypeRadiosBuyer" value="true" checked>
+                                Buyer account
+                            </label>
+                            <br />
+                            <label>
+                                <input type="radio" name="isBuyer" id="accountTypeRadiosSeller" value="false">
+                                Seller + Buyer account
+                            </label>
+                        </div>
+                    </div>
+                    <br />
+                    <input type="submit" class="btn btn-left btn-secondary" value="Register" />
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    $(function()  {
+        var pageReload = '@ViewBag.IsReload';
+        console.log(pageReload);
+        if (pageReload == 'True') {
+            console.log('');
+            $("#register").addClass('active')
+            $("#register-btn").addClass('active')
+            $("#signin").removeClass('active')
+            $("#signin-btn").removeClass('active')
+        }
+        else {
+            $("#register").removeClass('active')
+            $("#register-btn").removeClass('active')
+            $("#signin").addClass('active')
+            $("#signin-btn").addClass('active')
+        }
+    });
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
